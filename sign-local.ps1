@@ -58,5 +58,3 @@ try {
         } finally { $luminaPublic.Dispose() }
     }
 } finally { $luminaPassword = $null; $luminaSecure = $null }
-
-
