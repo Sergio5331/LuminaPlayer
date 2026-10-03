@@ -1,3 +1,4 @@
+#include <QStandardPaths>
 #include "MpvPlayer.h"
 #include <mpv/client.h>
 #include <QDir>
@@ -32,7 +33,7 @@ void MpvPlayer::Deleter::operator()(mpv_handle* handle) const noexcept
 MpvPlayer::MpvPlayer(WId window, QString captureDirectory, QObject* parent)
     : QObject(parent), handle_(mpv_create()),
       captureDirectory_(QDir(captureDirectory.isEmpty()
-          ? QDir::current().filePath("capturas") : captureDirectory).absolutePath())
+          ? QDir(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation)).filePath("LuminaPlayer/capturas") : captureDirectory).absolutePath())
 {
     if (!handle_ || !window) throw std::runtime_error("No se pudo crear mpv o su HWND anfitrión.");
     option("config", "no");

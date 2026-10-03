@@ -1,4 +1,4 @@
-param([ValidateSet('Release', 'Debug')][string]$Configuration = 'Release', [switch]$Tests)
+param([ValidateSet('Release', 'Debug')][string]$Configuration = 'Release', [switch]$Tests, [string]$MpvRoot = (Join-Path $PSScriptRoot 'third_party/mpv'))
 $ErrorActionPreference = 'Stop'
 # Algunos hosts proporcionan Path y PATH a la vez; MSBuild exige una sola clave.
 $luminaSearchPath = $env:PATH
@@ -13,7 +13,7 @@ if (-not $luminaVs) { throw 'No se encontró una instalación completa de MSVC x
 $env:VCINSTALLDIR = Join-Path $luminaVs 'VC\'
 $luminaCmake = Join-Path $luminaVs 'Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe'
 if (-not (Test-Path -LiteralPath $luminaCmake)) { throw 'Falta el componente CMake de Visual Studio.' }
-& $luminaCmake -S $luminaRoot -B "$luminaRoot\build" -G 'Visual Studio 17 2022' -A x64 "-DCMAKE_PREFIX_PATH=$luminaRoot\third_party\Qt" "-DMPV_ROOT=$luminaRoot\third_party\mpv" "-DLUMINA_BUILD_TESTS=$($Tests.IsPresent)"
+& $luminaCmake -S $luminaRoot -B "$luminaRoot\build" -G 'Visual Studio 17 2022' -A x64 "-DCMAKE_PREFIX_PATH=$luminaRoot\third_party\Qt" "-DMPV_ROOT=$MpvRoot" "-DMPV_INCLUDE_DIR=$MpvRoot/include" "-DMPV_LIBRARY=$MpvRoot/lib/mpv.lib" "-DMPV_DLL=$MpvRoot/libmpv-2.dll" "-DLUMINA_BUILD_TESTS=$($Tests.IsPresent)"
 if ($LASTEXITCODE -ne 0) { throw 'Falló la configuración CMake.' }
 & $luminaCmake --build "$luminaRoot\build" --config $Configuration --parallel
 if ($LASTEXITCODE -ne 0) { throw 'Falló la compilación.' }

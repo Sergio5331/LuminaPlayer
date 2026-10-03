@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(LuminaPlayer VERSION 1.0.0 LANGUAGES CXX)
+project(LuminaPlayer VERSION 0.9.0 LANGUAGES CXX)
 if(NOT WIN32 OR NOT MSVC)
     message(FATAL_ERROR "Utiliza Windows con MSVC o clang-cl y Qt de ABI MSVC.")
 endif()

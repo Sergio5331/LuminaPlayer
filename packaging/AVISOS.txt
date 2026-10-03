@@ -1,0 +1,36 @@
+﻿LuminaPlayer 0.9.0 Beta — Windows x64
+
+Desarrollado por Sergio.
+Código fuente de LuminaPlayer: https://github.com/Sergio5331/LuminaPlayer
+Licencia del código de LuminaPlayer: GNU GPL versión 3 o posterior.
+
+Esta aplicación utiliza Qt 6.8.3 y libmpv mediante bibliotecas dinámicas.
+La distribución de libmpv utilizada es la variante LGPL, compilada con
+-Dgpl=false; su FFmpeg declara LGPL versión 3 o posterior.
+Las bibliotecas y sus componentes conservan sus propias licencias y autores.
+Consulta los textos completos en la carpeta licenses de la instalación.
+
+Se incluyen archivos de fuentes de Qt, mpv y FFmpeg en third-party-source.
+Receta del proveedor de libmpv:
+https://github.com/zhongfly/mpv-winbuild/tree/88bdc4db67bb476a7606921eb2d68b273440d59b
+Registro de compilación:
+https://github.com/zhongfly/mpv-winbuild/actions/runs/37004200613
+mpv: 3186d369f9f090cd1363be0ac46a037824b702c6
+FFmpeg: f68e1afc1
+Qt: 6.8.3, fuentes oficiales sin modificaciones.
+
+Puedes modificar y reemplazar las bibliotecas compatibles de Qt y libmpv
+junto al ejecutable. No existe una comprobación de firma que impida usarlas.
+La ingeniería inversa necesaria para depurar estas modificaciones está
+permitida por las licencias de las bibliotecas.
+Para fuentes adicionales de las dependencias del proveedor o información de
+compilación, abre un reporte en el repositorio de LuminaPlayer.
+
+Se distribuye sin garantía. Esta es una versión beta.
+El certificado de desarrollo no es un certificado de editor reconocido por
+Windows. SmartScreen o Smart App Control pueden impedir su ejecución.
+El instalador no cambia ni desactiva las protecciones de Windows.
+
+La instalación es por usuario. Tus ajustes y capturas se conservan al
+Desinstalar. Las capturas nuevas se guardan de forma predeterminada en
+Imágenes/LuminaPlayer/capturas; puedes elegir otra carpeta en la aplicación.

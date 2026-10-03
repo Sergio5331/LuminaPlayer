@@ -4,7 +4,24 @@
 
 Reproductor multimedia para Windows, desarrollado en C++20 con Qt 6 Widgets y libmpv. Interfaz oscura, controles flotantes y una ventana compacta para seguir viendo vídeos mientras trabajas.
 
-**Estado: versión de desarrollo.** Incluye pruebas de integración locales; todavía requiere validación en otros equipos antes de considerarse una versión estable. Este repositorio contiene el código fuente y los recursos gráficos. Las dependencias se instalan por separado.
+[**Descargar LuminaPlayer para Windows x64**](https://github.com/Sergio5331/LuminaPlayer/releases/download/v0.9.0-beta.1/LuminaPlayer-0.9.0-Beta-Setup-x64.exe) · [Reportar un problema](https://github.com/Sergio5331/LuminaPlayer/issues)
+
+**Versión 0.9.0 Beta.** Código abierto bajo GPLv3 o posterior. Incluye pruebas locales; todavía requiere validación en otros equipos antes de considerarse una versión estable.
+
+## Descargar e instalar
+
+1. Descarga el instalador desde el enlace anterior o desde [Releases](https://github.com/Sergio5331/LuminaPlayer/releases/tag/v0.9.0-beta.1).
+2. Ejecuta `LuminaPlayer-0.9.0-Beta-Setup-x64.exe` y sigue el asistente en español.
+3. Puedes crear un acceso directo y activar la integración con **Abrir con**.
+4. Abre LuminaPlayer desde el menú Inicio y arrastra un vídeo o audio a la ventana.
+
+Compatible con Windows 10/11 de 64 bits. La instalación es por usuario y no solicita permisos de administrador. El instalador incluye Qt, libmpv y el runtime de C++; no necesitas instalarlos por separado. Se desinstala desde Configuración → Aplicaciones. Tus capturas y ajustes se conservan.
+
+Para elegirlo como reproductor predeterminado, utiliza **Abrir con → Elegir otra aplicación → Siempre**, o Configuración → Aplicaciones → Aplicaciones predeterminadas. El instalador no cambia tus preferencias automáticamente.
+
+**Firma de desarrollo:** el certificado es autofirmado y no es un certificado de editor reconocido. Windows puede mostrar advertencias o bloquear la ejecución. El instalador no modifica las protecciones de Windows.
+
+Las capturas nuevas se guardan en `Imágenes/LuminaPlayer/capturas`, salvo que hayas elegido otra carpeta. Las fuentes de las bibliotecas se incluyen en la instalación para acompañar sus licencias.
 
 ## Funciones
 
@@ -103,6 +120,23 @@ Los directorios de compilación, dependencias, capturas y certificados locales q
 
 ## Distribución
 
-No se incluye instalador en esta etapa. Los ejecutables de desarrollo pueden estar sujetos a comprobaciones de seguridad de Windows; un certificado autofirmado no garantiza su aceptación por Smart App Control.
+El instalador se crea con Inno Setup 6.6 o posterior y PowerShell 7. Para prepararlo desde el código fuente, instala Qt y Visual Studio, además de 7-Zip:
 
-Antes de distribuir binarios, revisa los requisitos de licencia de las versiones concretas de Qt, libmpv y sus dependencias. Consulta sus proyectos oficiales: [Qt](https://www.qt.io/), [mpv](https://mpv.io/) y [libass](https://github.com/libass/libass). No se ha añadido una licencia para el código de LuminaPlayer en este repositorio.
+```powershell
+.\prepare-installer.ps1
+.\build-installer.ps1
+```
+
+El primer comando obtiene el [paquete de dependencias y fuentes](https://github.com/Sergio5331/LuminaPlayer/releases/download/v0.9.0-beta.1/LuminaPlayer-Dependencies.zip), verifica su SHA256 y genera la biblioteca de importación MSVC. El segundo compila, ejecuta las pruebas y crea el instalador en `dist/`. Para usar un compilador de Inno Setup instalado en otra ruta, añade `-InnoCompiler "C:/Herramientas/Inno Setup 6/ISCC.exe"`.
+
+`-Sign` utiliza un certificado local de desarrollo mediante `sign-local.ps1`. Las claves privadas y las contraseñas quedan excluidas del repositorio y del instalador. No establece confianza en Windows.
+
+La publicación incluye `SHA256SUMS.txt` para verificar los archivos descargados.
+
+## Licencia
+
+El código de LuminaPlayer se distribuye bajo **GNU GPL versión 3 o posterior**; consulta [LICENSE](LICENSE). Puedes obtener el código desde **Code → Download ZIP** o clonar el repositorio.
+
+Qt, libmpv y las demás dependencias conservan sus propias licencias. El paquete de esta beta utiliza libmpv con `gpl=false` y FFmpeg bajo LGPLv3 o posterior. Los avisos y textos de licencia se encuentran en `packaging/` y también se instalan con la aplicación. Consulta los proyectos oficiales: [Qt](https://www.qt.io/), [mpv](https://mpv.io/) y [libass](https://github.com/libass/libass).
+
+Desarrollado por [Sergio](https://github.com/Sergio5331).

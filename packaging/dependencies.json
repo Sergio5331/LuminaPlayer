@@ -1,0 +1,6 @@
+{
+  "url": "https://github.com/Sergio5331/LuminaPlayer/releases/download/v0.9.0-beta.1/LuminaPlayer-Dependencies.zip",
+  "sha256": "f16d6be4f3dd87b6289ac261fd67441cdd78f01c5e6bd1b9bb314933a7adbb6d",
+  "mpv_commit": "3186d369f9f090cd1363be0ac46a037824b702c6",
+  "qt_version": "6.8.3"
+}

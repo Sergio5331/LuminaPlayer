@@ -13,6 +13,7 @@ int main(int argc, char* argv[])
     WindowsComApartment com;
     QApplication app(argc, argv);
     QApplication::setApplicationName("LuminaPlayer");
+    QApplication::setApplicationVersion("0.9.0");
     QApplication::setOrganizationName("LuminaPlayer");
     QApplication::setStyle("Fusion");
     try {

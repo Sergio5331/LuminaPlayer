@@ -1,4 +1,5 @@
 /build*/
+/dist/
 /.vs/
 /CMakeUserPresets.json
 /third_party/
